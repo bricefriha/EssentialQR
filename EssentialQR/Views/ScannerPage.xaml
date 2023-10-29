@@ -5,9 +5,65 @@
              x:Class="EssentialQR.Views.ScannerPage"
              Title="ScannerPage">
     <Grid>
+        <Grid.Resources>
+            <x:Double x:Key="QRzoneSize">300</x:Double>
+        </Grid.Resources>
         <zxing:CameraBarcodeReaderView
                 x:Name="cameraBarcodeReaderView"
                 BarcodesDetected="BarcodesDetected"
                 />
+        
+        <!-- Overlay -->
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="{StaticResource QRzoneSize}"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="{StaticResource QRzoneSize}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="0"
+                     Grid.Column="0"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="0"
+                     Grid.Column="1"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="0"
+                     Grid.Column="2"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="1"
+                     Grid.Column="0"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="1"
+                     Grid.Column="2"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="2"
+                     Grid.Column="0"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="2"
+                     Grid.Column="1"/>
+
+            <ContentView BackgroundColor="Black"
+                     Opacity="0.50"
+                     Grid.Row="2"
+                     Grid.Column="2"/>
+        </Grid>
     </Grid>
 </ContentPage>
