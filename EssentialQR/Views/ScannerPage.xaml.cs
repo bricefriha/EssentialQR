@@ -31,7 +31,7 @@ public partial class ScannerPage : ContentPage
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        // Workaround this issue
+        // NOTE: Workaround for  this issue: https://github.com/Redth/ZXing.Net.Maui/issues/7
         ResetCamera();
     }
 
