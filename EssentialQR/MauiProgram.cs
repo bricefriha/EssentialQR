@@ -15,6 +15,11 @@ namespace EssentialQR
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+
+                    // Icon
+                    fonts.AddFont("Font-Awesome-6-Brands-Regular-400.otf", "FaBrandRegular");
+                    fonts.AddFont("Font-Awesome-6-Free-Regular-400.otf", "FaRegular");
+                    fonts.AddFont("Font-Awesome-6-Free-Solid-900.otf", "FaSolid");
                 });
 
 #if DEBUG
