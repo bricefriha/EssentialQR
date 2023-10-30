@@ -7,17 +7,13 @@
     xmlns:pages="clr-namespace:EssentialQR.Views">
     <TabBar>
 
-        <Tab 
-             Title="Scanner">
-            <ShellContent
-                            ContentTemplate="{DataTemplate pages:ScannerPage}"
-                            Route="ScannerPage" />
+        <Tab Title="Scanner">
+            <ShellContent ContentTemplate="{DataTemplate pages:ScannerPage}"
+                          Route="ScannerPage" />
         </Tab>
-        <Tab 
-             Title="History">
-            <ShellContent
-                            ContentTemplate="{DataTemplate pages:HistoryPage}"
-                            Route="MainPage" />
+        <Tab Title="History">
+            <ShellContent ContentTemplate="{DataTemplate pages:HistoryPage}"
+                          Route="MainPage" />
 
         </Tab>
     </TabBar>
