@@ -9,16 +9,25 @@ namespace EssentialQR.ViewModels
 {
     public class ScannerViewModel : BaseViewModel
     {
-        private int myVar;
+        private string lastResult;
 
-        public int MyProperty
+        public string LastResult
         {
-            get { return myVar; }
-            set { myVar = value; }
+            get { return lastResult; }
+            set 
+            {
+                lastResult = value; 
+                OnPropertyChanged(nameof(LastResult));
+            }
         }
 
         public ScannerViewModel()
         {
+            
+        }
+        public void RegisterResult (string result)
+        {
+            LastResult = result;
         }
     }
 }
