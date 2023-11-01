@@ -1,9 +1,4 @@
 ﻿using MvvmHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EssentialQR.ViewModels
 {
@@ -36,6 +31,10 @@ namespace EssentialQR.ViewModels
                     Browser.OpenAsync(LastResult).Wait();
             });
         }
+        /// <summary>
+        /// Method to register a result
+        /// </summary>
+        /// <param name="result">value of the qr/bar code</param>
         public void RegisterResult (string result)
         {
             LastResult = result;
