@@ -9,21 +9,32 @@ namespace EssentialQR.ViewModels
 {
     public class ScannerViewModel : BaseViewModel
     {
-        private string lastResult;
+        private Command _openResultCommand;
+
+        public Command OpenResultCommand
+        {
+            get { return _openResultCommand; }
+        }
+
+        private string _lastResult;
 
         public string LastResult
         {
-            get { return lastResult; }
+            get { return _lastResult; }
             set 
             {
-                lastResult = value; 
+                _lastResult = value; 
                 OnPropertyChanged(nameof(LastResult));
             }
         }
 
         public ScannerViewModel()
         {
-            
+            _openResultCommand = new Command (() =>
+            {
+                if (_lastResult.StartsWith("http"))
+                    Browser.OpenAsync(LastResult).Wait();
+            });
         }
         public void RegisterResult (string result)
         {
