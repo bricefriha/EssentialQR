@@ -1,12 +1,16 @@
+using EssentialQR.ViewModels;
+
 namespace EssentialQR.Views;
 
 public partial class ScannerPage : ContentPage
 {
     private int _camViewChildIndex;
+    private readonly ScannerViewModel _vm;
 
     public ScannerPage()
 	{
 		InitializeComponent();
+        BindingContext = _vm = new ScannerViewModel();
 
         _camViewChildIndex = CamGrid.Children.IndexOf(cameraBarcodeReaderView);
     }
@@ -18,7 +22,8 @@ public partial class ScannerPage : ContentPage
 
             string QRValue = e.Results[0].Value;
 
-            await DisplayAlert("Scan result", QRValue, "Ok");
+            // Register the result
+            _vm.RegisterResult(QRValue);
         });
     }
     protected override void OnAppearing()
