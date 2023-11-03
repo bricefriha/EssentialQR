@@ -1,4 +1,6 @@
 using EssentialQR.ViewModels;
+using System.Collections.Generic;
+using ZXing.Net.Maui;
 
 namespace EssentialQR.Views;
 
@@ -13,6 +15,13 @@ public partial class ScannerPage : ContentPage
         BindingContext = _vm = new ScannerViewModel();
 
         _camViewChildIndex = CamGrid.Children.IndexOf(cameraBarcodeReaderView);
+        cameraBarcodeReaderView.Options = new BarcodeReaderOptions
+        {
+            AutoRotate = false,
+            TryHarder = true,
+            Formats = ZXing.Net.Maui.BarcodeFormat.QrCode,
+        };
+        cameraBarcodeReaderView.IsDetecting = true ;
     }
 
     private void BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
