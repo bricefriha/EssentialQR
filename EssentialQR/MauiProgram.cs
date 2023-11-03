@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using ZXing.Net.Maui.Controls;
 
 namespace EssentialQR
@@ -11,6 +12,7 @@ namespace EssentialQR
             builder
                 .UseMauiApp<App>()
                 .UseBarcodeReader()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

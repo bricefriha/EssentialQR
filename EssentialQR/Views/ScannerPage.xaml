@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="EssentialQR.Views.ScannerPage"
-             Title="ScannerPage">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm ="clr-namespace:EssentialQR.ViewModels"
+             Title="ScannerPage"
+             x:DataType="vm:ScannerViewModel">
     <Grid x:Name="CamGrid">
         <Grid.Resources>
             <x:Double x:Key="QRzoneSize">270</x:Double>
@@ -50,7 +53,7 @@
                    IsClippedToBounds="True"
                      Grid.Column="1">
                 <Grid>
-                    <BoxView BackgroundColor="Transparent"
+                    <BoxView BackgroundColor= "Transparent"
                               Opacity="0.5"
                              VerticalOptions="Center"/>
                     <BoxView Color="Red"
@@ -59,6 +62,16 @@
                              Margin="20,0"/>
                 </Grid>
             </Frame>
+
+            <Button BackgroundColor="Gray"
+                   Text="{Binding LastResult}"
+                    IsVisible="{Binding LastResult, Converter={StaticResource StringNotNullOrEmptyToBoolConverter}}"
+                   TextColor="White"
+                   Grid.Row="2"
+                   Padding="0"
+                    Command="{Binding OpenResultCommand}"
+                   HeightRequest="30"
+                   Grid.Column="1"/>
 
             <!--<ContentView BackgroundColor="Black"
                      Opacity="0.50"
