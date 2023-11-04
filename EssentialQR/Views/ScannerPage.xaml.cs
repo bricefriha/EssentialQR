@@ -19,6 +19,7 @@ public partial class ScannerPage : ContentPage
         {
             AutoRotate = false,
             TryHarder = true,
+            TryInverted = true,
             Formats = ZXing.Net.Maui.BarcodeFormat.QrCode,
         };
         cameraBarcodeReaderView.IsDetecting = true ;
