@@ -23,6 +23,8 @@ namespace EssentialQR.ViewModels
             }
         }
 
+        private Timer _clearResultTimer;
+
         public ScannerViewModel()
         {
             _openResultCommand = new Command (() =>
@@ -38,6 +40,12 @@ namespace EssentialQR.ViewModels
         public void RegisterResult (string result)
         {
             LastResult = result;
+
+            _clearResultTimer = new Timer((e) => ClearResult(), null, TimeSpan.FromSeconds(5), Timeout.InfiniteTimeSpan);
+        }
+        private void ClearResult()
+        {
+            LastResult = string.Empty;
         }
     }
 }
