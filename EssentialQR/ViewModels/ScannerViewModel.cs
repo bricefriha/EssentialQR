@@ -1,4 +1,5 @@
-﻿using MvvmHelpers;
+﻿using EssentialQR.Models;
+using MvvmHelpers;
 
 namespace EssentialQR.ViewModels
 {
@@ -41,7 +42,14 @@ namespace EssentialQR.ViewModels
         /// <param name="result">value of the qr/bar code</param>
         public void RegisterResult (string result)
         {
+            if (result == _lastResult)
+                return;
+
             LastResult = result;
+            _currentApp.SqLiteConn.Insert(new CodeRecord
+            {
+                Value = result,
+            });
 
             _clearResultTimer = new Timer((e) => ClearResult(), null, TimeSpan.FromSeconds(5), Timeout.InfiniteTimeSpan);
         }

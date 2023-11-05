@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using EssentialQR.Models;
+using SQLite;
 
 namespace EssentialQR
 {
@@ -6,20 +7,30 @@ namespace EssentialQR
     {
         public App()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+
+                //throw;
+            }
 
             MainPage = new AppShell();
 
             // Set the db up
             StartDb();
+            SqLiteConn.CreateTable<CodeRecord>();
         }
 
-        public static SQLiteConnection SqLiteConn { get; private set; }
+        public SQLiteConnection SqLiteConn { get; private set; }
 
         /// <summary>
         /// Function to start the data base
         /// </summary>
-        public static async void StartDb()
+        public async void StartDb()
         {
             const SQLite.SQLiteOpenFlags Flags =
                     // open the database in read/write mode
@@ -37,10 +48,6 @@ namespace EssentialQR
             if (!File.Exists(path))
                 // Create the folder path.
                 File.Create(path);
-
-
-
-
 
             // Sqlite connection
             SqLiteConn = new SQLiteConnection(path);
