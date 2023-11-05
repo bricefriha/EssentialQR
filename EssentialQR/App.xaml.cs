@@ -29,7 +29,7 @@ namespace EssentialQR
                     // enable multi-threaded database access
                     SQLite.SQLiteOpenFlags.SharedCache;
             // Just use whatever directory SpecialFolder.Personal returns
-            string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
             var path = Path.Combine(libraryPath, "ess_qr.db3");
 
