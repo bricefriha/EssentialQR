@@ -2,21 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:EssentialQR.Models"
+             xmlns:vm="clr-namespace:EssentialQR.ViewModels"
              x:Class="EssentialQR.Views.HistoryPage"
              Title="HistoryPage"
+             x:DataType="vm:HistoryViewModel"
              >
     <CollectionView ItemsSource="{Binding CodeRecords}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:CodeRecord">
+                <Grid Padding="5">
                 <Frame>
                     <Grid ColumnDefinitions="auto,auto,auto">
                         <Label Grid.Column="1"
                                Text="{Binding Value}"
-                               TextColor="Black"
                                />
                         
                     </Grid>
                 </Frame>
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
