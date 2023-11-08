@@ -1,5 +1,6 @@
 ﻿using EssentialQR.Models;
 using MvvmHelpers;
+using EssentialQR.Toolkit;
 
 namespace EssentialQR.ViewModels
 {
@@ -32,8 +33,7 @@ namespace EssentialQR.ViewModels
             _currentApp = (App.Current as App);
             _openResultCommand = new Command (() =>
             {
-                if (_lastResult.StartsWith("http"))
-                    Browser.OpenAsync(LastResult).Wait();
+                Reader.TakeAction(_lastResult);
             });
         }
         /// <summary>
