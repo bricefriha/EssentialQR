@@ -9,7 +9,11 @@ namespace EssentialQR.Toolkit
 {
     public static class Reader
     {
-        public static void TakeAction (string value)
+        /// <summary>
+        /// Take action from a given barcode/qr value
+        /// </summary>
+        /// <param name="value">barcode/qr value</param>
+        public static void Submit (string value)
         {
             if (value.StartsWith("http"))
                 Browser.OpenAsync(value).Wait();

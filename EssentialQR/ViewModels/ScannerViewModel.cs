@@ -33,7 +33,8 @@ namespace EssentialQR.ViewModels
             _currentApp = (App.Current as App);
             _openResultCommand = new Command (() =>
             {
-                Reader.TakeAction(_lastResult);
+                // Submit result
+                Reader.Submit(_lastResult);
             });
         }
         /// <summary>
