@@ -1,9 +1,12 @@
-﻿using MvvmHelpers;
+﻿using EssentialQR.Models;
+using MvvmHelpers;
+using EssentialQR.Toolkit;
 
 namespace EssentialQR.ViewModels
 {
     public class ScannerViewModel : BaseViewModel
     {
+        private App _currentApp;
         private Command _openResultCommand;
 
         public Command OpenResultCommand
@@ -27,10 +30,11 @@ namespace EssentialQR.ViewModels
 
         public ScannerViewModel()
         {
+            _currentApp = (App.Current as App);
             _openResultCommand = new Command (() =>
             {
-                if (_lastResult.StartsWith("http"))
-                    Browser.OpenAsync(LastResult).Wait();
+                // Submit result
+                Reader.Submit(_lastResult);
             });
         }
         /// <summary>
@@ -39,7 +43,14 @@ namespace EssentialQR.ViewModels
         /// <param name="result">value of the qr/bar code</param>
         public void RegisterResult (string result)
         {
+            if (result == _lastResult)
+                return;
+
             LastResult = result;
+            _currentApp.SqLiteConn.Insert(new CodeRecord
+            {
+                Value = result,
+            });
 
             _clearResultTimer = new Timer((e) => ClearResult(), null, TimeSpan.FromSeconds(5), Timeout.InfiniteTimeSpan);
         }
